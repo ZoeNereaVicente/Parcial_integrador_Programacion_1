@@ -102,48 +102,34 @@ def canjear_puntos(puntos):
         print("❌ No tienes puntos para canjear.")
         return puntos
 
-    print(f"\nTienes {puntos} puntos disponibles.")
-    print("Minijuegos disponibles:")
+    juegos_disponibles = {
+        "1": {"nombre": "Adivinanza", "costo": 5, "funcion": jugar_adivinanza},
+        "2": {"nombre": "Trivia", "costo": 5, "funcion": jugar_trivia},
+        "3": {"nombre": "Batalla Naval", "costo": 10, "funcion": jugar_batalla_naval},
+        "4": {"nombre": "Memoria", "costo": 7, "funcion": jugar_memoria},
+        "5": {"nombre": "Piedra, Papel o Tijera", "costo": 5, "funcion": jugar_piedra_papel_tijera}
+    }
+
+    print(f"\n🎮 Tienes {puntos} puntos disponibles.")
+    print("Minijuegos disponibles para canjear:")
 
     opciones = []
-    if puntos >= 5:
-        print("1. Adivinanza (5 puntos)")
-        opciones.append("1")
-    if puntos >= 5:
-        print("2. Trivia (5 puntos)")
-        opciones.append("2")
-    if puntos >= 10:
-        print("3. Batalla Naval (10 puntos)")
-        opciones.append("3")
-    if puntos >= 7:
-        print("4. Memoria (7 puntos)")
-        opciones.append("4")
-    if puntos >= 5:
-        print("5. Piedra, Papel o Tijera (5 puntos)")
-        opciones.append("5")
+    for clave, juego in juegos_disponibles.items():
+        if puntos >= juego["costo"]:
+            print(f"{clave}. {juego['nombre']} ({juego['costo']} puntos)")
+            opciones.append(clave)
     print("0. Volver")
 
-    eleccion = input("Elige una opción: ")
+    eleccion = input("Elige una opción: ").strip()
 
-    if eleccion == "1" and "1" in opciones:
-        puntos -= 5
-        jugar_adivinanza()
-    elif eleccion == "2" and "2" in opciones:
-        puntos -= 5
-        jugar_trivia()
-    elif eleccion == "3" and "3" in opciones:
-        puntos -= 10
-        jugar_batalla_naval()
-    elif eleccion == "4" and "4" in opciones:
-        puntos -= 7
-        jugar_memoria()
-    elif eleccion == "5" and "5" in opciones:
-        puntos -= 5
-        jugar_piedra_papel_tijera()
-    elif eleccion == "0":
-        print("Volviendo al menú...")
+    if eleccion == "0":
+        print("🔙 Volviendo al menú...")
+    elif eleccion in opciones:
+        juego = juegos_disponibles[eleccion]
+        puntos -= juego["costo"]
+        juego"funcion"
     else:
         print("❌ Opción inválida o puntos insuficientes.")
 
-    print(f"Te quedan {puntos} puntos.")
+    print(f"💰 Te quedan {puntos} puntos.")
     return puntos
