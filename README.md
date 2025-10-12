@@ -8,7 +8,7 @@
 
 ### Idea general del proyecto
 
-Es una aplicación de consola que permite al usuario gestionar una lista de tareas. Cada vez que completa una tarea, gana puntos. Estos puntos pueden canjearse por minijuegos simples durante los momentos de descanso, al acumular puntos se van desbloqueando diferentes niveles de dificultad.
+Es una aplicación de consola que permite al usuario gestionar una lista de tareas. Cada vez que completa una tarea, gana puntos. Estos puntos pueden canjearse por mini-juegos simples durante los momentos de descanso, al acumular puntos se van desbloqueando diferentes niveles de dificultad.
 
 ### Integrantes del grupo:
 
