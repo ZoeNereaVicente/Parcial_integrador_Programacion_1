@@ -1,14 +1,31 @@
-# Check and Play
+### 🎮 Check & Play
+Check & Play es una aplicación de consola que combina productividad con entretenimiento. El usuario gestiona una lista de tareas diarias y, al completarlas, gana puntos que puede canjear por minijuegos simples durante sus momentos de descanso. ¡Una forma divertida de mantenerse enfocado y motivado!
 
-- :sparkles: Creá tu propia lista de tareas.
-- :sparkles: Terminá una tarea y ganá puntos.
-- :sparkles: Canjeá esos puntos por algún juego.
 
----
+### 🧠 Idea General
 
-### Idea general del proyecto
+✅ Gestión de tareas: Agregá, completá y visualizá tus tareas diarias.
 
-Es una aplicación de consola que permite al usuario gestionar una lista de tareas. Cada vez que completa una tarea, gana puntos. Estos puntos pueden canjearse por mini-juegos simples durante los momentos de descanso, al acumular puntos se van desbloqueando diferentes niveles de dificultad.
+💎 Sistema de puntos: Cada tarea completada otorga puntos.
+
+🎲 Minijuegos desbloqueables: Canjeá tus puntos por juegos como adivinanzas, trivia, memoria, batalla naval y piedra-papel-tijera.
+
+🔓 Dificultad progresiva: A medida que acumulás puntos, se desbloquean juegos con mayor costo y desafío.
+
+
+### 📁 Estructura del Proyecto
+```text
+check_and_play/
+│
+├── main.py
+└── utils/
+    ├── agregar_tarea.py
+    ├── completar_tarea.py
+    ├── ver_tareas.py
+    ├── canjear_puntos.py
+    └── ver_puntos.py
+```
+
 
 ### Integrantes del grupo:
 
@@ -17,6 +34,7 @@ Es una aplicación de consola que permite al usuario gestionar una lista de tare
 - Ferreyra, Martin Gennaro
 - Cairo, Mariana
 - Páez De Miguel, Daniela
+
 
 ### Profesor:
 
