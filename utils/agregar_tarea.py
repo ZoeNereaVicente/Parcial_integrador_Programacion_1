@@ -1,7 +1,7 @@
 def agregar_tarea(lista_tareas):
     """Añade una nueva tarea a la lista con validaciones de entrada."""
     try:
-        nueva_tarea = input("Ingresa la nueva tarea: ").strip()
+        nueva_tarea = input("Ingresa la nueva tarea: ").strip().lower()
 
         # Validaciones
         if not nueva_tarea:
@@ -10,7 +10,7 @@ def agregar_tarea(lista_tareas):
             print("⚠️ La tarea no puede contener números.")
         elif len(nueva_tarea) <= 3:
             print("⚠️ La tarea debe tener más de tres caracteres.")
-        elif any(nueva_tarea.lower() == tarea[0].lower() for tarea in lista_tareas):
+        elif any(nueva_tarea == tarea[0].lower().strip() for tarea in lista_tareas):
             print("⚠️ Esa tarea ya existe en la lista.")
         else:
             lista_tareas.append([nueva_tarea, False])
