@@ -32,7 +32,7 @@ def canjear_puntos(puntos):
         print("❌ No tienes puntos para canjear.")
         return puntos
 
-    ruta_txt = os.path.join(os.path.dirname(__file__), "..", "archivos", "juegos.txt")
+    ruta_txt = os.path.join(os.path.dirname(__file__), "..", "files", "juegos.txt")
 
     juegos = cargar_juegos_desde_txt(ruta_txt)
 
