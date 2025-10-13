@@ -13,6 +13,7 @@ def agregar_tarea(lista_tareas):
         elif any(nueva_tarea == tarea[0].lower().strip() for tarea in lista_tareas):
             print("⚠️ Esa tarea ya existe en la lista.")
         else:
+            # Se agrega la tarea como una lista con dos elementos: la descripción y el estado inicial (pendiente)
             lista_tareas.append([nueva_tarea, False])
             print("✅ Tarea agregada con éxito.")
     except Exception as e:
