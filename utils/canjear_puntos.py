@@ -113,21 +113,21 @@ def canjear_puntos(puntos):
     print(f"\n🎮 Tienes {puntos} puntos disponibles.")
     print("Minijuegos disponibles para canjear:")
 
-    opciones = []
     for clave, juego in juegos_disponibles.items():
-        if puntos >= juego["costo"]:
-            print(f"{clave}. {juego['nombre']} ({juego['costo']} puntos)")
-            opciones.append(clave)
+        print(f"{clave}. {juego['nombre']} ({juego['costo']} puntos)")
     print("0. Volver")
 
     eleccion = input("Elige una opción: ").strip()
 
     if eleccion == "0":
         print("🔙 Volviendo al menú...")
-    elif eleccion in opciones:
+    elif eleccion in juegos_disponibles:
         juego = juegos_disponibles[eleccion]
-        puntos -= juego["costo"]
-        juego"funcion"
+        if puntos >= juego["costo"]:
+            puntos -= juego["costo"]
+            juego["funcion"]()
+        else:
+            print("⚠️ No tienes puntos suficientes para este minijuego.")
     else:
         print("❌ Opción inválida o puntos insuficientes.")
 
