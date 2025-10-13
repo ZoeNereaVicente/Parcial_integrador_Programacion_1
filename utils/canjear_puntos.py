@@ -1,135 +1,84 @@
-import random
+import os
 
-# Minijuegos con validaciones
+def cargar_juegos_desde_txt(ruta_txt):
+    juegos = []
+    archivo = None
+    try:
+        archivo = open(ruta_txt, "r", encoding="utf-8")
+        for linea in archivo:
+            linea = linea.strip()
+            # Validamos la línea e ignoramos la línea si comienza con #
+            if linea and not linea.startswith("#"):
+                # Creamos una lista separando los valores de cada linea
+                partes = linea.split(";")                
+                if len(partes) == 2:
+                    nombre, costo_str = partes
+                    if costo_str.strip().isdigit():
+                        juegos.append({"nombre": nombre.strip(), "costo": int(costo_str)})
+    except FileNotFoundError:
+        print("❌  No se encontró el archivo.")
+        return juegos
+    except Exception as e:
+        print(f"❌ Hubo un error inesperado: {e}")
+        return juegos
+    finally:
+        if archivo:
+            archivo.close()
+    return juegos
 
-def jugar_adivinanza():
-    print("\n🎯 Juego de Adivinanza")
-    numero = random.randint(1, 10)
-    while True:
-        intento = input("Adivina el número del 1 al 10: ")
-        if intento.isdigit():
-            intento = int(intento)
-            if 1 <= intento <= 10:
-                break
-            else:
-                print("❌ El número debe estar entre 1 y 10.")
-        else:
-            print("❌ Entrada inválida. Debes ingresar un número.")
-    if intento == numero:
-        print("¡Correcto! Ganaste.")
-    else:
-        print(f"Incorrecto. El número era {numero}.")
-
-def jugar_trivia():
-    print("\n🧠 Juego de Trivia")
-    print("¿Cuál es la capital de Francia?")
-    print("1. Berlín\n2. Madrid\n3. París\n4. Roma")
-    while True:
-        respuesta = input("Tu respuesta (1-4): ")
-        if respuesta in ["1", "2", "3", "4"]:
-            break
-        else:
-            print("❌ Entrada inválida. Elige una opción del 1 al 4.")
-    if respuesta == "3":
-        print("¡Correcto!")
-    else:
-        print("Incorrecto. La respuesta correcta es París.")
-
-def jugar_batalla_naval():
-    print("\n🚢 Batalla Naval Simplificada")
-    barco = random.randint(1, 9)
-    while True:
-        intento = input("Elige una posición del 1 al 9 para atacar: ")
-        if intento.isdigit():
-            intento = int(intento)
-            if 1 <= intento <= 9:
-                break
-            else:
-                print("❌ La posición debe estar entre 1 y 9.")
-        else:
-            print("❌ Entrada inválida. Debes ingresar un número.")
-    if intento == barco:
-        print("¡Hundiste el barco!")
-    else:
-        print(f"Fallaste. El barco estaba en la posición {barco}.")
-
-def jugar_memoria():
-    print("\n🧠 Juego de Memoria")
-    pares = ["🐶", "🐱", "🐶", "🐱"]
-    random.shuffle(pares)
-    print("Recuerda la posición de los pares:")
-    print(pares)
-    input("Presiona Enter cuando estés listo para responder...")
-    while True:
-        respuesta = input("¿Dónde estaba el segundo 🐶? (0-3): ")
-        if respuesta.isdigit():
-            respuesta = int(respuesta)
-            if 0 <= respuesta <= 3:
-                break
-            else:
-                print("❌ Debes ingresar un número entre 0 y 3.")
-        else:
-            print("❌ Entrada inválida. Debes ingresar un número.")
-    if pares[respuesta] == "🐶" and pares.index("🐶") != respuesta:
-        print("¡Correcto!")
-    else:
-        print("Incorrecto.")
-
-def jugar_piedra_papel_tijera():
-    print("\n✊🖐✌ Piedra, Papel o Tijera")
-    opciones = ["piedra", "papel", "tijera"]
-    while True:
-        usuario = input("Elige piedra, papel o tijera: ").lower()
-        if usuario in opciones:
-            break
-        else:
-            print("❌ Entrada inválida. Elige entre piedra, papel o tijera.")
-    maquina = random.choice(opciones)
-    print(f"La máquina eligió: {maquina}")
-    if usuario == maquina:
-        print("Empate!")
-    elif (usuario == "piedra" and maquina == "tijera") or \
-         (usuario == "papel" and maquina == "piedra") or \
-         (usuario == "tijera" and maquina == "papel"):
-        print("¡Ganaste!")
-    else:
-        print("Perdiste.")
-
-# Función principal para canjear puntos
 
 def canjear_puntos(puntos):
     if puntos <= 0:
         print("❌ No tienes puntos para canjear.")
         return puntos
 
-    juegos_disponibles = {
-        "1": {"nombre": "Adivinanza", "costo": 5, "funcion": jugar_adivinanza},
-        "2": {"nombre": "Trivia", "costo": 5, "funcion": jugar_trivia},
-        "3": {"nombre": "Batalla Naval", "costo": 10, "funcion": jugar_batalla_naval},
-        "4": {"nombre": "Memoria", "costo": 7, "funcion": jugar_memoria},
-        "5": {"nombre": "Piedra, Papel o Tijera", "costo": 5, "funcion": jugar_piedra_papel_tijera}
-    }
+    ruta_txt = os.path.join(os.path.dirname(__file__), "..", "archivos", "juegos.txt")
 
-    print(f"\n🎮 Tienes {puntos} puntos disponibles.")
-    print("Minijuegos disponibles para canjear:")
+    juegos = cargar_juegos_desde_txt(ruta_txt)
 
-    for clave, juego in juegos_disponibles.items():
-        print(f"{clave}. {juego['nombre']} ({juego['costo']} puntos)")
+    if not juegos:
+        print("❌ No hay juegos disponibles para canjear. Verifica 'juegos.txt'.")
+        return puntos
+
+    print(f"\nTienes {puntos} puntos disponibles.")
+    print("Juegos disponibles para canjear:")
+
+    canjeables = []
+    for juego in juegos:
+        if juego["costo"] <= puntos:
+            canjeables.append(juego)
+    if not canjeables:
+        print("❌ No tienes suficientes puntos para ningún juego.")
+        print(f"Te quedan {puntos} puntos.")
+        return puntos
+
+    numero_opcion = 1
+    for juego in canjeables:
+        print(f"{numero_opcion}. {juego['nombre']} ({juego['costo']} puntos)")
+        numero_opcion = numero_opcion + 1
     print("0. Volver")
 
-    eleccion = input("Elige una opción: ").strip()
+    eleccion = input("Elige una opción: ")
 
     if eleccion == "0":
-        print("🔙 Volviendo al menú...")
-    elif eleccion in juegos_disponibles:
-        juego = juegos_disponibles[eleccion]
-        if puntos >= juego["costo"]:
-            puntos -= juego["costo"]
-            juego["funcion"]()
-        else:
-            print("⚠️ No tienes puntos suficientes para este minijuego.")
-    else:
-        print("❌ Opción inválida o puntos insuficientes.")
+        print("Volviendo al menú...")
+        print(f"Te quedan {puntos} puntos.")
+        return puntos
 
-    print(f"💰 Te quedan {puntos} puntos.")
+    if not eleccion.isdigit():
+        print("❌ Entrada inválida.")
+        print(f"Te quedan {puntos} puntos.")
+        return puntos
+
+    indice = int(eleccion) - 1
+    if indice < 0 or indice >= len(canjeables):
+        print("❌ Opción inválida.")
+        print(f"Te quedan {puntos} puntos.")
+        return puntos
+
+    seleccionado = canjeables[indice]
+    costo = seleccionado["costo"]
+    puntos -= costo
+    print(f"✅ Canje realizado: '{seleccionado['nombre']}' por {costo} puntos.")
+    print(f"Te quedan {puntos} puntos.")
     return puntos
