@@ -1,9 +1,5 @@
 from utils import agregar_tarea, completar_tarea, ver_tareas, canjear_puntos, ver_puntos
 
-# Declaración de variables iniciales en el ámbito principal
-tareas_diarias = []
-puntos_usuario = 0
-
 def mostrar_menu():
     """Muestra el menú principal de opciones."""
     print("\n--- Menú Principal ---")
@@ -16,11 +12,11 @@ def mostrar_menu():
 
 def main():
     """Función principal que muestra el menú y maneja la interacción del usuario."""
-    continuar_programa = True
     tareas_diarias = []
     puntos_usuario = 0
+    opcion = 0
     
-    while continuar_programa:
+    while not opcion == '6':
         mostrar_menu()
         opcion = input("Elige una opción (1-6): ").strip()
 
@@ -40,7 +36,7 @@ def main():
             ver_puntos(puntos_usuario)
         elif opcion == '6':
             print("👋 ¡Gracias por usar Check & Play! ¡Nos vemos pronto!")
-            continuar_programa = False
+
 
 # --- Ejecución del programa ---
 if __name__ == "__main__":
