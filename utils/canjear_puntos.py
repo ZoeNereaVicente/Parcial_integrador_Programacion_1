@@ -58,7 +58,7 @@ def canjear_puntos(puntos):
         print(f"{numero_opcion}. {juego['nombre']} ({juego['costo']} puntos)")
         numero_opcion = numero_opcion + 1
     print("0. Volver")
-    
+
     eleccion = input("Elige una opción: ")
 
     if eleccion == "0":

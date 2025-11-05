@@ -1,8 +1,9 @@
 from games import *
 
 def jugar(juego_elegido):
-  hayError = False
   """Esta función se encarga de validar a que juego llamar de acuerdo al parametro que recibe"""
+
+  hayError = False
   match juego_elegido:
     case 'Adivinanza':
       return print("funcion jugar_adivinanza")
@@ -19,6 +20,7 @@ def jugar(juego_elegido):
     case 'Piedra, Papel o Tijera':
       return print("funcion jugar_ppt")
     
+    # Caso default
     case _:
       print(f"❌ Hubo un error al cargar el juego: {juego_elegido}.")
       hayError = True
