@@ -48,7 +48,6 @@ def canjear_puntos(puntos):
     for juego in juegos:
         if juego["costo"] <= puntos:
             canjeables.append(juego)
-    canjeables.append({'nombre': "ALGO", 'costo': 8})
     if not canjeables:
         print("❌ No tienes suficientes puntos para ningún juego.")
         print(f"Te quedan {puntos} puntos.")
