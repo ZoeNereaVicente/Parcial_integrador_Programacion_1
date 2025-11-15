@@ -21,7 +21,7 @@ def completar_tarea(lista_tareas, puntos):
                     puntos += puntos_ganados
                     print(f"🥳 ¡Felicitaciones! Completaste la tarea y ganaste {puntos_ganados} puntos.")
                 else:
-                    print("⚠️ Esa tarea ya estaba completada.")
+                    print("⚠️  Esa tarea ya estaba completada.")
             else:
                 print("❌ Número de tarea fuera de rango. Intenta con un número válido.")
 
