@@ -1,6 +1,10 @@
 # Listado de juegos para canjear (Nombre;Costo)
 Adivinanza;5
+aDiviNanza;10
 Trivia;5
+trivia;5
 Batalla Naval;10
 Memoria;7
+Memorias;-4
 Piedra, Papel o Tijera;5
+Piedra, Papel o Tijera;0
