@@ -3,6 +3,7 @@ import os
 def cargar_juegos_desde_txt(ruta_txt):
     juegos = []
     archivo = None
+    juegos_agregados = set()
     try:
         archivo = open(ruta_txt, "r", encoding="utf-8")
         for linea in archivo:
@@ -13,8 +14,11 @@ def cargar_juegos_desde_txt(ruta_txt):
                 partes = linea.split(";")                
                 if len(partes) == 2:
                     nombre, costo_str = partes
-                    if costo_str.strip().isdigit():
-                        juegos.append({"nombre": nombre.strip(), "costo": int(costo_str)})
+                    nombre_juego = nombre.strip()
+                    costo = costo_str.strip()
+                    if costo.isdigit() and int(costo) > 0 and nombre_juego.upper() not in juegos_agregados:
+                        juegos.append({"nombre": nombre_juego, "costo": int(costo)})
+                        juegos_agregados.add(nombre_juego.upper())
     except FileNotFoundError:
         print("❌  No se encontró el archivo.")
         return juegos
