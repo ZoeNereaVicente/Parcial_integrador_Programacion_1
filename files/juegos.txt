@@ -7,4 +7,4 @@ Batalla Naval;10
 Memoria;7
 Memorias;-4
 Piedra, Papel o Tijera;5
-Piedra, Papel o Tijera;0
+Buscaminas;0
