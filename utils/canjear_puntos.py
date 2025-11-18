@@ -1,4 +1,5 @@
 import os
+from .jugar import jugar
 
 def cargar_juegos_desde_txt(ruta_txt):
     juegos = []
@@ -85,4 +86,16 @@ def canjear_puntos(puntos):
     puntos -= costo
     print(f"✅ Canje realizado: '{seleccionado['nombre']}' por {costo} puntos.")
     print(f"Te quedan {puntos} puntos.")
+    print()
+
+    # Esta función se encarga de ejecutar el juego seleccionado.
+    # En caso de no encontrar el juego devuelve un booleano.
+    hayError = jugar(seleccionado['nombre'])
+
+    if (hayError):
+        # Devolvemos los puntos al usuario
+        puntos += costo
+        print("Acreditando nuevamente los puntos...")
+        print(f"✅ Acreditación realizada, te quedan {puntos} puntos.")
+
     return puntos
