@@ -10,16 +10,16 @@ def validar_tarea(lista_tareas, intentos = 0):
 
     # Validaciones
     if not nueva_tarea:
-        print("⚠️ La tarea no puede estar vacía.")
+        print("⚠️  La tarea no puede estar vacía.")
         return validar_tarea(lista_tareas, intentos + 1)  
     elif any(caracter.isdigit() for caracter in nueva_tarea):
-        print("⚠️ La tarea no puede contener números.")
+        print("⚠️  La tarea no puede contener números.")
         return validar_tarea(lista_tareas, intentos + 1)
     elif len(nueva_tarea) <= 3:
-        print("⚠️ La tarea debe tener más de tres caracteres.")
+        print("⚠️  La tarea debe tener más de tres caracteres.")
         return validar_tarea(lista_tareas, intentos + 1)
     elif any(nueva_tarea == tarea[0].lower().strip() for tarea in lista_tareas):
-        print("⚠️ Esa tarea ya existe en la lista.")
+        print("⚠️  Esa tarea ya existe en la lista.")
         return validar_tarea(lista_tareas, intentos + 1)
 
     # Si pasa todas las validaciones, se agrega la tarea.
