@@ -42,7 +42,7 @@ def jugar_batalla_naval():
             fil -= 1
             col -= 1
         except:
-            print("⚠️ Entrada inválida. Usa el formato fila,col.")
+            print("⚠️  Entrada inválida. Usa el formato fila,col.")
             continue
 
         # Validar límites

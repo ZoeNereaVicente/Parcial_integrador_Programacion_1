@@ -33,7 +33,7 @@ def jugar_piedra_papel_tijera():
 
         # Validación de rango 
         if usuario < 0 or usuario > 3:
-            print("⚠️ Opción fuera de rango. Elegí 0, 1, 2 o 3.")
+            print("⚠️  Opción fuera de rango. Elegí 0, 1, 2 o 3.")
             usuario = pedir_opcion("Tu elección (0-3): ")
 
         else:
