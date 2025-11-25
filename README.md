@@ -28,6 +28,7 @@ check_and_play/
 │   ├── ver_tareas.py
 │   ├── canjear_puntos.py
 │   ├── eliminar_tarea.py
+|   ├── jugar.py
 │   └── ver_puntos.py
 │
 └── games/
