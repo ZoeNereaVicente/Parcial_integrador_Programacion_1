@@ -25,6 +25,7 @@ check_and_play/
     ├── completar_tarea.py
     ├── ver_tareas.py
     ├── canjear_puntos.py
+    ├── eliminar_tarea.py
     └── ver_puntos.py
 ```
 
