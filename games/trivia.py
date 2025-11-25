@@ -102,14 +102,21 @@ def validar_pregunta(preg):
 
   Retorna un dato booleano.
   '''
-  return len(preg['opciones']) == 4 and preg['respuesta'] in preg['opciones']
-
+  try:
+    return len(preg['opciones']) == 4 and preg['respuesta'] in preg['opciones']
+  except (KeyError, TypeError):
+    return False
+  
 def seleccionar_pregunta(pregs, intentos=0):
   '''
   Selecciona una pregunta de la lista de preguntas al azar.
   Si la pregunta no tiene un formato válido, vuelve a elegir una nueva.
   Recibe la lista de preguntas por parámetro, además suma intentos para no entrar en loop.
   '''
+  # Validar que sea una lista.
+  if not isinstance(pregs, list):
+    raise TypeError("❌ El tipo de dato es incorrecto. Tiene que ser una lista.")
+  
   # Validar que haya preguntas disponibles
   if len(pregs) == 0:
     raise ValueError("⚠️  No quedan preguntas disponibles.")
@@ -198,7 +205,7 @@ def jugar_trivia():
   while rta != "SALIR" and rtas_correctas < 3:
     try:
       pregunta = seleccionar_pregunta(preguntas_para_jugar)
-    except ValueError as e:
+    except (ValueError, TypeError) as e: 
       print(f'{e}\n{msj_fin}')
       return
 

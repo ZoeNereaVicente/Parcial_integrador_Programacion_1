@@ -2,14 +2,14 @@ import random
 
 def jugar_piedra_papel_tijera():
 
-    print("👊 Piedra, 📄 Papel o ✂ Tijera")
+    print("👊 Piedra, 📄 Papel o ✂  Tijera")
     print("Elige una opción:")
     print("1 = 👊 Piedra")
     print("2 = 📄 Papel")
-    print("3 = ✂ Tijera")
+    print("3 = ✂  Tijera")
     print("0 = Salir del juego")
 
-    opciones = {1: "👊 Piedra", 2: "📄 Papel", 3: "✂ Tijera"}
+    opciones = {1: "👊 Piedra", 2: "📄 Papel", 3: "✂  Tijera"}
 
     # Evita que el programa se corte si ingresan letras
     def pedir_opcion(mensaje):

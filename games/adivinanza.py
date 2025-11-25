@@ -8,7 +8,7 @@ def jugar_adivinanza():
         {"acertijo": "Tiene agujas pero no cose; tiene números pero no cuenta.", "respuesta": "reloj", "pista":"Marca las horas."},
         {"acertijo": "Blanca por la mañana, roja al mediodía y negra por la noche; ¿qué es?", "respuesta": "la manzana", "pista":"Fruta clásica."},
         {"acertijo": "No es madera y tiene hojas; no es libro y tiene páginas; ¿qué es?", "respuesta": "árbol", "pista":"Crece en la tierra."},
-        {"acertijo": "Camina sin patas y enseña el hogar; lleva su casa siempre al caminar.", "respuesta": "caracol", "pista":"Lento y con concha."}
+        {"acertijo": "Camina sin patas y enseña el hogar; lleva su casa siempre al caminar.", "respuesta": "caracol", "pista":"Lento y con caparazón."}
     ]
 
     indices_disponibles = set(range(len(adivinanzas)))
