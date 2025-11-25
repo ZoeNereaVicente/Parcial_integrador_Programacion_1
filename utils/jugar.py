@@ -16,7 +16,8 @@ def jugar(juego_elegido):
       return False
       
     case 'Memoria':
-      return print("funcion jugar_memoria")
+      jugar_memoria()
+      return False
     
     case 'Piedra, Papel o Tijera':
       jugar_piedra_papel_tijera()
