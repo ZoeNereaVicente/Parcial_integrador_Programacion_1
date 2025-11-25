@@ -13,12 +13,17 @@ def jugar_piedra_papel_tijera():
 
     # Evita que el programa se corte si ingresan letras
     def pedir_opcion(mensaje):
-        while True:
+        intento = 0
+        while intento < 3: 
             try:
                 valor = int(input(mensaje))
                 return valor
             except ValueError:
+                intento += 1
                 print("❌ Entrada no válida. Debes ingresar un número entero (0-3).")
+                print(f"Intentos restantes: {3 - intento}")
+        print("❌ Se agotaron los intentos. Se tomará la opción 0 (salir).")
+        return 0
 
     # Primera elección del usuario
     usuario = pedir_opcion("Tu elección (0-3): ")
@@ -61,4 +66,5 @@ def jugar_piedra_papel_tijera():
                     seguir_jugando = False
 
     print("Gracias por jugar 🙌")
+
 
