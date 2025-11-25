@@ -18,15 +18,25 @@ Check & Play es una aplicación de consola que combina productividad con entrete
 check_and_play/
 │
 ├── main.py
+│
 ├── files/
 │   └── juegos.txt
-└── utils/
-    ├── agregar_tarea.py
-    ├── completar_tarea.py
-    ├── ver_tareas.py
-    ├── canjear_puntos.py
-    ├── eliminar_tarea.py
-    └── ver_puntos.py
+│
+├── utils/
+│   ├── agregar_tarea.py
+│   ├── completar_tarea.py
+│   ├── ver_tareas.py
+│   ├── canjear_puntos.py
+│   ├── eliminar_tarea.py
+|   ├── jugar.py
+│   └── ver_puntos.py
+│
+└── games/
+    ├── adivinanza.py
+    ├── trivia.py
+    ├── batalla_naval.py
+    ├── memoria.py
+    └── piedra_papel_tijera.py
 ```
 
 ### Integrantes del grupo:

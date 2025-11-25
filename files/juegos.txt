@@ -8,3 +8,4 @@ Memoria;7
 Memorias;-4
 Piedra, Papel o Tijera;5
 Buscaminas;0
+Solitario;15
